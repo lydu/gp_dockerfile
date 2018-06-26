@@ -1,4 +1,4 @@
-version: '2.2'
+version: '2'
 services:
   gpmaster:
      image: 10.0.0.96:5000/database/gp_final:v2 
@@ -13,8 +13,7 @@ services:
        - "20032:2345"
      privileged: true
      tty: true
-     cpu_count: 2
-     cpu_percent: 60
+     mem_limit: 20g
   gpnode1:
      image: 10.0.0.96:5000/database/gp_final:v2
      hostname: sdw1
