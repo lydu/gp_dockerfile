@@ -1,23 +1,26 @@
-version: '2'
+version: '2.2'
 services:
   gpmaster:
-     image: 10.0.0.96:5000/database/gp_df:v1 
+     image: 10.0.0.96:5000/database/gp_final:v2 
      hostname: master
+     container_name: gp_master
      labels:
       io.rancher.scheduler.global: 'true'
-      io.rancher.scheduler.affinity:host_label: key1=96
+      io.rancher.scheduler.affinity:host_label: key1=102
      networks: 
        - docker_gwbridge
      ports:
        - "20032:2345"
      privileged: true
      tty: true
+     cpu_count: 2
+     cpu_percent: 60
   gpnode1:
-     image: 10.0.0.96:5000/database/gp_df:v1
+     image: 10.0.0.96:5000/database/gp_final:v2
      hostname: sdw1
      labels:
       io.rancher.scheduler.global: 'true'
-      io.rancher.scheduler.affinity:host_label: key1=96
+      io.rancher.scheduler.affinity:host_label: key1=104
      networks: 
        - docker_gwbridge
      ports:
@@ -26,11 +29,11 @@ services:
      privileged: true
      tty: true
   gpnode2:
-     image: 10.0.0.96:5000/database/gp_df:v1
+     image: 10.0.0.96:5000/database/gp_final:v2
      hostname: sdw2
      labels:
       io.rancher.scheduler.global: 'true'
-      io.rancher.scheduler.affinity:host_label: key1=96
+      io.rancher.scheduler.affinity:host_label: key1=100
      networks: 
        - docker_gwbridge
      ports:
