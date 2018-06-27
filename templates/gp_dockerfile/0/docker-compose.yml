@@ -1,7 +1,7 @@
 version: '2'
 services:
   gpmaster:
-     image: 10.0.0.96:5000/database/gp_final:v2 
+     image: 10.0.0.96:5000/database/gp_final:v3 
      hostname: master
      container_name: gp_master
      labels:
@@ -11,6 +11,10 @@ services:
        - docker_gwbridge
      ports:
        - "20032:2345"
+       - "28080:28080"
+     volumes:
+       - /opt/gpmaster/gpdata_final:/home/gpadmin/gpdata
+       - /opt/gpmaster/conf_final:/home/gpadmin/conf
      privileged: true
      tty: true
      mem_limit: 20g
@@ -25,8 +29,11 @@ services:
      ports:
        - "20041:40000"
        - "20042:40001"
+     volumes:
+       - /opt/gpnode1/gpdata_final:/home/gpadmin/gpdata
      privileged: true
      tty: true
+     mem_limit: 20g
   gpnode2:
      image: 10.0.0.96:5000/database/gp_final:v2
      hostname: sdw2
@@ -38,6 +45,8 @@ services:
      ports:
        - "20045:40000"
        - "20046:40001"
+     volumes:
+       - /opt/gpnode2/gpdata_final:/home/gpadmin/gpdata
      privileged: true
      tty: true
-
+     mem_limit: 20g
