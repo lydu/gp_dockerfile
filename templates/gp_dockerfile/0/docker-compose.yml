@@ -19,7 +19,7 @@ services:
      tty: true
      mem_limit: 20g
   gpnode1:
-     image: 10.0.0.96:5000/database/gp_final:v2
+     image: 10.0.0.96:5000/database/gp_final:v3
      hostname: sdw1
      labels:
       io.rancher.scheduler.global: 'true'
@@ -35,7 +35,7 @@ services:
      tty: true
      mem_limit: 20g
   gpnode2:
-     image: 10.0.0.96:5000/database/gp_final:v2
+     image: 10.0.0.96:5000/database/gp_final:v3
      hostname: sdw2
      labels:
       io.rancher.scheduler.global: 'true'
