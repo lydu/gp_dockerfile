@@ -14,7 +14,6 @@ services:
        - "28080:28080"
      volumes:
        - /opt/gpmaster/gpdata_final:/home/gpadmin/gpdata
-       - /opt/gpmaster/conf_final:/home/gpadmin/conf
      privileged: true
      tty: true
      mem_limit: 20g
